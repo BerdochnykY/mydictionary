@@ -1,0 +1,35 @@
+BoxLayoutExample:
+
+
+<BoxLayoutExample>:
+    orientation: "vertical"
+    padding: 10
+    spacing: 10
+
+    Label:
+        text: root.translatebel_word
+
+    TextInput:
+        id: my_text_input
+        on_hint_text: root.test
+        font_size: "30sp"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+
+    Label:
+        text: "My answer: " + root.my_text_input
+
+    Label:
+        id: answer
+        text: root.answer
+
+    Button:
+        text: "Check"
+        on_press: root.on_button_check()
+
+    Button:
+        text: "Next"
+        on_press: root.on_button_next()
+        on_press: root.my_text_input = ""
+
+
