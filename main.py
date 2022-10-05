@@ -10,6 +10,13 @@ from kivy.uix.label import Label
 from kivy.properties import StringProperty
 from kivy.properties import NumericProperty
 from kivy.properties import BoundedNumericProperty
+from kivy.core.window import Window
+from kivy.config import Config
+
+
+Window.clearcolor = (0, 0, 0, 1)
+Window.size = (414, 896)
+
 
 
 class BoxLayoutExample(BoxLayout):
@@ -27,38 +34,37 @@ class BoxLayoutExample(BoxLayout):
     translate = d_ua[rand_num]
     correct = d_en[rand_num]
 
-    translatebel_word = StringProperty(str(translate))
-    correct_word = StringProperty(str(correct))
+    translatebel_word = StringProperty(str(translate).capitalize())
+    correct_word = StringProperty(str(correct).capitalize())
 
-    test = StringProperty("aa")
     my_text_input = StringProperty("")
 
     answer = StringProperty("")
 
-    def on_button_next(self):
+    def on_button_next(self, widget):
         new_rand_num = random.randrange(sheet_rows)
         word = d_ua[new_rand_num]
         correct_w = d_en[new_rand_num]
-        print(new_rand_num)
-        print(word)
-        print(correct_w)
+        # print(new_rand_num)
+        # print(word)
+        # print(correct_w)
         self.actual_num = str(new_rand_num)
-        self.translatebel_word = str(word)
-        self.correct_word = str(correct_w)
+        self.translatebel_word = str(word.capitalize())
+        self.correct_word = str(correct_w.capitalize())
         self.my_text_input = ""
         self.answer = ""
+        widget.text = ""
 
-
-    def on_button_check(self):
-        data = self.my_text_input
-        correct_word = self.correct_word
+    def on_button_check(self, widget):
+        data = widget.text.capitalize()
+        correct_word = self.correct_word.capitalize()
         if data == correct_word:
-            self.answer = 'Правильно'
+            self.answer = 'Good, go next'
         else:
-            self.answer = 'Почти, правильно: ' + correct_word
+            self.answer = 'Correct: ' + correct_word
 
-    def on_text_validate(self, widget):
-        self.my_text_input = widget.text
+    def clear_filds(self, widget):
+        widget.text = ""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

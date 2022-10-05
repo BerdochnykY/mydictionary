@@ -8,28 +8,43 @@ BoxLayoutExample:
 
     Label:
         text: root.translatebel_word
+        bold: True
+        font_size: "40sp"
+        background_color: (0, .13, .35, 1)
 
     TextInput:
-        id: my_text_input
+        id: my_text
         on_hint_text: root.test
-        font_size: "30sp"
+        font_size: "40sp"
         multiline: False
-        on_text_validate: root.on_text_validate(self)
-
-    Label:
-        text: "My answer: " + root.my_text_input
+        halign: "center"
 
     Label:
         id: answer
         text: root.answer
+        font_size: "30sp"
+        background_color: .38, .38, .38, 1
+        bold: True
+        color: (0, 1, 0, 1) if self.text == "Good, go next" else (1, 0, 0, 1)
+        size_hint_y: .5
 
     Button:
         text: "Check"
-        on_press: root.on_button_check()
+        font_size: "40sp"
+        color: 1, 1, 1, 1
+        background_color: (.13, .31, .67, 1)
+        bold: True
+        on_press: root.on_button_check(my_text)
 
     Button:
-        text: "Next"
-        on_press: root.on_button_next()
-        on_press: root.my_text_input = ""
+        text: "Next word"
+        font_size: "40sp"
+        color: .75, .88, .21, 1
+        background_color: (.13, .31, .67, 1)
+        bold: True
+        on_press: root.on_button_next(my_text)
+        on_press: root.clear_filds(answer)
+
+
 
 
