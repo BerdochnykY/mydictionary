@@ -19,7 +19,7 @@ Window.size = (414, 896)
 
 
 
-class BoxLayoutExample(BoxLayout):
+class DictionaryPage(BoxLayout):
     global d_en
     d_en = ["actor", "airport", "angry", "attic", "baby", "bank", "basement", "beach", "bedroom", "bored", "box",
             "boyfriend", "Brazil", "busy", "Canada", "child", "China", "class", "classmate", "cold", "computer",
@@ -39,6 +39,7 @@ class BoxLayoutExample(BoxLayout):
             "start", "station", "summer house", "sushi", "sweater", "take a trip", "tea", "the Earth",
             "the Northen Lights", "the other day", "the Sun", "tour", "train", "transfer", "tropical", "US visa",
             "walk", "watch", "what kind of …?", "wounderful", "workout", "yoga", "yoga center"]
+    # d_en = ["actor", "attic", "baby"]
     global d_ua
     d_ua = ["Актор", "Аеропорт", "Сердитий, Злий", "Горище", "Немовля", "Банк", "Підвал", "Пляж", "Спальня",
             "Нудьгуючий", "Коробка, Ящик", "Хлопець", "Бразилія", "Зайнятий", "Канада", "дитина", "Китай",
@@ -62,6 +63,7 @@ class BoxLayoutExample(BoxLayout):
             "совершать поездку", "чай", "Земля", "Северное сияние", "на днях (в прошлом)", "Солнце", "тур", "поезд",
             "трансфер", "тропический", "виза в США", "гулять, ходить", "смотреть", "какого рода/вида/сорта",
             "замечательный, чудесный", "тренировка", "йога", "центр йоги"]
+    # d_ua = ["Актор", "Горище", "Немовля"]
 
     global sheet_rows
     sheet_rows = len(d_en)
@@ -80,12 +82,13 @@ class BoxLayoutExample(BoxLayout):
     answer = StringProperty("")
 
     def on_button_next(self, widget):
-        new_rand_num = random.randrange(sheet_rows)
+        new_len = len(d_en)
+        new_rand_num = random.randrange(new_len)
         word = d_ua[new_rand_num]
         correct_w = d_en[new_rand_num]
-        print(new_rand_num)
-        print(word)
-        print(correct_w)
+        # print(new_rand_num)
+        # print(word)
+        # print(correct_w)
         self.actual_num = str(new_rand_num)
         self.translatebel_word = str(word.capitalize())
         self.correct_word = str(correct_w.capitalize())

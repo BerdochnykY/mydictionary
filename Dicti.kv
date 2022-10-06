@@ -1,7 +1,7 @@
-BoxLayoutExample:
+DictionaryPage:
 
 
-<BoxLayoutExample>:
+<DictionaryPage>:
     orientation: "vertical"
     padding: 10
     spacing: 10
@@ -42,6 +42,7 @@ BoxLayoutExample:
         background_color: (.13, .31, .67, 1)
         bold: True
         on_press: root.on_button_check(my_text)
+        size_hint_y: .8
 
     Button:
         text: "Next word"
@@ -49,8 +50,10 @@ BoxLayoutExample:
         color: .75, .88, .21, 1
         background_color: (.13, .31, .67, 1)
         bold: True
+        size_hint_y: .8
         on_press: root.on_button_next(my_text)
         on_press: root.clear_filds(answer)
+
 
 
 
