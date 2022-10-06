@@ -7,22 +7,29 @@ BoxLayoutExample:
     spacing: 10
 
     Label:
+        text: "Translate this:"
+        bold: True
+        font_size: "35sp"
+        color: (.13, .31, .67, 1)
+        size_hint_y: .3
+
+    Label:
         text: root.translatebel_word
         bold: True
-        font_size: "40sp"
+        font_size: "25sp"
         background_color: (0, .13, .35, 1)
 
     TextInput:
         id: my_text
         on_hint_text: root.test
-        font_size: "40sp"
+        font_size: "30sp"
         multiline: False
         halign: "center"
 
     Label:
         id: answer
         text: root.answer
-        font_size: "30sp"
+        font_size: "25sp"
         background_color: .38, .38, .38, 1
         bold: True
         color: (0, 1, 0, 1) if self.text == "Good, go next" else (1, 0, 0, 1)
